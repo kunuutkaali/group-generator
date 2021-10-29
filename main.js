@@ -26,6 +26,8 @@ let persons = [
     "Dalena"
 ];
 
+/* Make a group out of person with maximum 4 persons each group */
+
 /* Output name to a list */
 function insertName(example){
     var node = document.createElement("LI");
