@@ -34,6 +34,21 @@ function insertName(example){
 }
 
 function updateList(){
-    persons.forEach((element) => insertName(element));
-    console.log("You have pushed updatelist!");
+    if(list.hasChildNodes()){
+        /* List is not empty, remove childs to update */
+        let newList = list.cloneNode(true);
+        let childs = newList.children;
+        let newListFrag = document.createDocumentFragment();
+        while(childs.length > 0){
+            newListFrag.appendChild(childs[Math.floor(Math.random() * childs.length)]);
+        };
+        list.innerHTML = "";
+        list.appendChild(newListFrag);
+    }else{
+        /* list is empty, append list */
+        persons.forEach((element) => insertName(element));
+    }
 }
+/* First run */
+let list = document.getElementById("namelist");
+updateList();
