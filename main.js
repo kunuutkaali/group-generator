@@ -1,56 +1,36 @@
-/* Define default group */
-let persons = [
-    "Anders",
-    "Martin",
-    "Barbora",
-    "Peter",
-    "Marco",
-    "Marc",
-    "Marcus",
-    "Hana",
-    "Cecilie",
-    "Kunuut",
-    "Carlos",
-    "Morten",
-    "Nils",
-    "Agnes",
-    "Peter K.",
-    "Lasse",
-    "Esben",
-    "Oliver",
-    "Artur",
-    "Laurita",
-    "Amir",
-    "Anna",
-    "Lucie",
-    "Dalena"
-];
+/* List of names */
+// let persons = [
+//     "Anders", "Martin", "Barbora", "Peter", "Marco", "Marc", "Marcus", "Hana", "Cecilie",
+//     "Kunuut", "Carlos", "Morten", "Nils", "Agnes", "Peter K.", "Lasse", "Esben",
+//     "Oliver", "Artur", "Laurita", "Amir", "Anna", "Lucie", "Dalena"
+// ];
 
-/* Make a group out of person with maximum 4 persons each group */
+const persons = document.querySelectorAll('.person');
+const groups = document.querySelectorAll('.group');
 
-/* Output name to a list */
-function insertName(example){
-    var node = document.createElement("LI");
-    node.innerHTML = example;
-    document.getElementById("namelist").appendChild(node);
-}
 
-function updateList(){
-    if(list.hasChildNodes()){
-        /* List is not empty, remove childs to update */
-        let newList = list.cloneNode(true);
-        let childs = newList.children;
-        let newListFrag = document.createDocumentFragment();
-        while(childs.length > 0){
-            newListFrag.appendChild(childs[Math.floor(Math.random() * childs.length)]);
-        };
-        list.innerHTML = "";
-        list.appendChild(newListFrag);
-    }else{
-        /* list is empty, append list */
-        persons.forEach((element) => insertName(element));
-    }
-}
-/* First run */
-let list = document.getElementById("namelist");
-updateList();
+
+// Person listeners
+persons.forEach( person => {
+    person.addEventListener('dragstart', () => {
+        person.classList.add('dragging')
+    })
+    person.addEventListener('dragend', () =>{
+        person.classList.remove('dragging')
+    })
+})
+
+// Group listeners
+groups.forEach( group => {
+    group.addEventListener('dragover', e => {
+        e.preventDefault(); // Prevent the default "dont" cursor
+        console.log(group.childElementCount);
+        if(group.childElementCount > 3){
+            // Dont add the child if the hovered group had 3 before (4 including this one)
+        }else{
+            // It is possible to add
+            const person = document.querySelector('.dragging')
+            group.appendChild(person)
+        }
+    })
+})

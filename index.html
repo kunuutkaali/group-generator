@@ -6,12 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Group generator</title>
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Group Generator</h1>
-    <button onclick="updateList()">Randomize names</button>
-    <ul id=namelist></ul>
-    <div id="myDiv"></div>
-    <small>This is a small text</small>
+    <div class="container">
+        <div class="group">
+            <div class="person" draggable="true">anders</div>
+            <div class="person" draggable="true">Martin</div>
+            <div class="person" draggable="true">Barbora</div>
+            <div class="person" draggable="true">Peter</div>
+        </div>
+        <div class="group">
+            <div class="person" draggable="true">Marco</div>
+            <div class="person" draggable="true">Marc</div>
+            <div class="person" draggable="true">Marcus</div>
+            <div class="person" draggable="true">Hana</div>
+        </div>
+        <div class="group">
+            <div class="person" draggable="true">Cecilie</div>
+        </div>
+    </div>
+    <div class="container">
+        <input type="text" placeholder="Write a name">
+        <button onclick="addNewPerson()"> Add new person</button>
+    </div>
 </body>
 </html>
