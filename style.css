@@ -9,11 +9,16 @@ body{
     background: darkcyan;
     border:aqua 2px solid;
     padding:5px;
+    height:300px;
 }
 .person{
     position:relative;
     background-color:white;
     padding:5px;
     cursor: move;
+}
+.group-start{
+    height:750px;
+    background-color: lightgray;
 }
 .person.dragging{ opacity: 0.5};

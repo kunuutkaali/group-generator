@@ -1,27 +1,8 @@
-/* List of names */
-// let persons = [
-//     "Anders", "Martin", "Barbora", "Peter", "Marco", "Marc", "Marcus", "Hana", "Cecilie",
-//     "Kunuut", "Carlos", "Morten", "Nils", "Agnes", "Peter K.", "Lasse", "Esben",
-//     "Oliver", "Artur", "Laurita", "Amir", "Anna", "Lucie", "Dalena"
-// ];
-
 const persons = document.querySelectorAll('.person');
 const groups = document.querySelectorAll('.group');
 
-
-
-// Person listeners
-persons.forEach( person => {
-    person.addEventListener('dragstart', () => {
-        person.classList.add('dragging')
-    })
-    person.addEventListener('dragend', () =>{
-        person.classList.remove('dragging')
-    })
-})
-
-// Group listeners
-groups.forEach( group => {
+// Add group event listener
+function addGroupListener(group){
     group.addEventListener('dragover', e => {
         e.preventDefault(); // Prevent the default "dont" cursor
         console.log(group.childElementCount);
@@ -32,5 +13,30 @@ groups.forEach( group => {
             const person = document.querySelector('.dragging')
             group.appendChild(person)
         }
+    })
+}
+
+// Assign the first groups
+groups.forEach( group => {
+    addGroupListener(group);
+})
+
+// Create a new group
+function addNewGroup(){
+    const container = document.querySelector('.container');
+    newGroup = document.createElement('DIV');
+    newGroup.classList.add('group');
+    addGroupListener(newGroup);
+    container.appendChild(newGroup);
+}
+
+
+// Person listeners
+persons.forEach( person => {
+    person.addEventListener('dragstart', () => {
+        person.classList.add('dragging')
+    })
+    person.addEventListener('dragend', () =>{
+        person.classList.remove('dragging')
     })
 })
